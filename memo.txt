@@ -1,0 +1,9 @@
+https://github.com/ildoonet/tf-pose-estimation
+
+model
+- cmu (trained in 656x368)
+- mobilenet_thin (trained in 432x368)
+- mobilenet_v2_large (trained in 432x368)
+- mobilenet_v2_small (trained in 432x368)
+
+run.exe --model=mobilenet_thin --image=./images/p1.jpg
