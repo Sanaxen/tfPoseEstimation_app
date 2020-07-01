@@ -7,8 +7,8 @@
     <ProjectGuid>{C22B9C78-9DDC-4F06-868B-21664B07B407}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>super_resolution_Application</RootNamespace>
-    <AssemblyName>super_resolution_Application</AssemblyName>
+    <RootNamespace>tfPoseEstimation</RootNamespace>
+    <AssemblyName>tfPoseEstimation</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -65,6 +65,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
