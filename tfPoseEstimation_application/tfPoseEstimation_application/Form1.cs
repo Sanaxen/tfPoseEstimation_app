@@ -53,13 +53,13 @@ namespace super_resolution_Application
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string model0 = "--model=cmu";
+            string model0 = "cmu";
             string model0_size = "656x368";
-            string model1 = "--model=mobilenet_thin";
+            string model1 = "mobilenet_thin";
             string model1_size = "432x368";
-            string model2 = "--model=mobilenet_v2_large";
+            string model2 = "mobilenet_v2_large";
             string model2_size = "432x368";
-            string model3 = "--model=mobilenet_v2_small";
+            string model3 = "mobilenet_v2_small";
             string model3_size = "432x368";
 
             string model = model0;
@@ -70,14 +70,14 @@ namespace super_resolution_Application
                     Environment.GetCommandLineArgs()[0]));
 
             apppath = @"D:\tfPoseEstimation_app\tfPoseEstimation_application\tfPoseEstimation_application\dist";
-            System.Environment.CurrentDirectory = apppath + "\\run";
+            System.Environment.CurrentDirectory = apppath + "\\main";
 
-            System.IO.Directory.SetCurrentDirectory(apppath + "\\run");
+            System.IO.Directory.SetCurrentDirectory(apppath + "\\main");
 
             string newfile1 = "input_.png";
             pictureBox1.Image.Save(newfile1, System.Drawing.Imaging.ImageFormat.Png);
 
-            string newfile2 = "input.png";
+            string newfile2 = "tfpose\\input.png";
             var imagemagick = new System.Diagnostics.ProcessStartInfo();
             imagemagick.FileName = "cmd.exe";
             imagemagick.UseShellExecute = true;
@@ -91,10 +91,11 @@ namespace super_resolution_Application
             File.Delete(newfile1);
 
             var app = new System.Diagnostics.ProcessStartInfo();
-            app.FileName = "run.exe";
+            app.FileName = "cmd.exe";
             app.UseShellExecute = true;
-            app.Arguments = model;
-            app.Arguments += " --image=./"+ newfile2;
+            app.Arguments = "/c";
+            app.Arguments += " run_image.bat ";
+            app.Arguments += model;
 
             string directoryName = System.IO.Path.GetDirectoryName(openFileDialog1.FileName);
             string fileName = System.IO.Path.GetFileNameWithoutExtension(openFileDialog1.FileName);
@@ -104,7 +105,7 @@ namespace super_resolution_Application
             p.WaitForExit();
 
             string outfile = "";
-            outfile = "output.jpg";
+            outfile = "tfpose\\output.jpg";
             pictureBox2.Image = CreateImage(outfile);
         }
 
