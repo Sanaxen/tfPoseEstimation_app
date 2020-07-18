@@ -65,15 +65,3 @@ line 56 -- end --> comment out
 ```
 python run.py --model=mobilenet_thin --image=./images/p1.jpg
 ```
-```pip install pyinstaller```  
-
-```pyinstaller run.py```  
-
-```dist\run\run.exe --image=./images/p1.jpg```  
-ModuleNotFoundError: No module named 'pkg_resources.py2_warn'
-[15996] Failed to execute script pyi_rth_pkgres
-
-**edit**```run.spec```  
-```
-hiddenimports=['pkg_resources.py2_warn'],
-```
