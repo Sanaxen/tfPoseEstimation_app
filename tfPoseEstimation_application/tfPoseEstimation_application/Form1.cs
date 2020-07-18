@@ -69,7 +69,7 @@ namespace super_resolution_Application
                 System.IO.Path.GetFullPath(
                     Environment.GetCommandLineArgs()[0]));
 
-            apppath = @"D:\tfPoseEstimation_app\tfPoseEstimation_application\tfPoseEstimation_application\dist";
+            //apppath = @"D:\tfPoseEstimation_app\tfPoseEstimation_application\tfPoseEstimation_application\dist";
             System.Environment.CurrentDirectory = apppath + "\\main";
 
             System.IO.Directory.SetCurrentDirectory(apppath + "\\main");
