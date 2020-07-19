@@ -39,11 +39,8 @@ if __name__ == '__main__':
         
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-    fps = cap.get(cv2.CAP_PROP_FPS)
-    if  fps < 1 :
-        fps = 24
-    fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    writer = cv2.VideoWriter('output.mp4', fourcc, fps, (width, height))
+    fps_time = 0
+    fps = 0
 
     while cap.isOpened():
         ret_val, image = cap.read()
@@ -55,7 +52,14 @@ if __name__ == '__main__':
 
         cv2.putText(image, "FPS: %f" % (1.0 / (time.time() - fps_time)), (10, 10),  cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
         cv2.imshow('tf-pose-estimation result', image)
-        writer.write(image)
+        
+        if fps_time > 0.0 and fps == 0.0:
+            fps = (1.0 / (time.time() - fps_time))
+            fourcc = cv2.VideoWriter_fourcc(*'XVID')
+            writer = cv2.VideoWriter('output.mp4', fourcc, fps, (width, height))
+
+        if fps > 0 :
+            writer.write(image)
 
         fps_time = time.time()
         if cv2.waitKey(1) == 27:
