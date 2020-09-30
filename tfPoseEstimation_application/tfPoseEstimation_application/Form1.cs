@@ -134,7 +134,7 @@ namespace super_resolution_Application
                 app.UseShellExecute = true;
                 app.Arguments = "/c";
                 app.Arguments += " run_video.bat ";
-                app.Arguments += " " + openFileDialog1.FileName + " ";
+                app.Arguments += " " + "\""+openFileDialog1.FileName + "\""+" ";
                 app.Arguments += model;
 
                 System.Diagnostics.Process p = System.Diagnostics.Process.Start(app);
